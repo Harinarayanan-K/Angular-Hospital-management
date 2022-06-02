@@ -1,0 +1,42 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="main">
+    <div class="count">
+        <h6>Total Appointments: </h6>
+        <h6 s>{{ count}}</h6>
+       
+    </div>
+    <div class="search">
+        <div class="inp">
+            <input type="search" class="form-control rounded" placeholder="email or phone" aria-label="Search" aria-describedby="search-addon" #patient />
+            <button (click)="findPatient(patient.value)" type="button" class="btn btn-outline-primary" value="">search</button>
+          </div> 
+
+    </div>
+    </div>
+    <div class="main body">
+        <table class="table" id="table1">
+            <thead>
+                <tr>
+                    <th scope="col">Patient Name</th>
+                    <th>Gender</th>
+                    <th>Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">AppointmentDate</th>
+                    <th scope="col">Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of patientDetails">
+                    <td>{{row.patientName}}</td>
+                    <td>{{row.gender}}</td>
+                    <td>{{row.email}}</td>
+                    <td>{{row.phoneNumber}}</td>
+                    <td>{{row.appointmentDate}}</td>
+                    <td>{{row.time}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<app-footer></app-footer>

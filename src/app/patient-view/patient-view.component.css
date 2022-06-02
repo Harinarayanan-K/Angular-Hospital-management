@@ -1,0 +1,47 @@
+.box1 {
+    align-items: center;
+    width: 50%;
+    float: left;
+    height: 27cm;
+    padding-left: 2cm;
+    padding-top: 3cm;
+    background-color: #e1faff;
+}
+
+.box2 {
+    width: 50%;
+    float: left;
+    height: 27cm;
+    float: left;
+    padding-top: 3cm;
+    background-color: #e1faff;
+}
+
+body {
+    background-color: #e1faff;
+}
+
+.mb-3 {
+    background-color: #e1faff;
+}
+
+.btn-primary {
+    margin-top: 9px;
+}
+
+.search {
+    width: 100%;
+    height: 2cm;
+    margin-top: 1cm;
+    padding-left: 50%;
+}
+
+.inp {
+    width: 7cm;
+    display: flex;
+    padding-top: 12px;
+}
+
+.table {
+    margin-top: 1cm;
+}

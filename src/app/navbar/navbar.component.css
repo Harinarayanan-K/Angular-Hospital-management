@@ -1,0 +1,19 @@
+.navbar {
+    position: fixed;
+    top: 0%;
+    background-color: #2f7786;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    height: 1.8cm;
+}
+.nav1 {
+    width: 50%;
+    padding-left: 5cm;
+    float: left;
+}
+.nav2 {
+    width: 50%;
+    padding-left: 92.5%;
+    float: left;
+}

@@ -1,0 +1,105 @@
+<app-header></app-header>
+<div class="main-container">
+    <div class="box1">
+        <div class="search">
+            <div class="search1">
+                <div class="inp">
+                    <input list="speciality" (input)="listDoctors(speciality.value)" class="form-control rounded"
+                        placeholder="Specialities" aria-label="Search" aria-describedby="search-addon" #speciality />
+                    <datalist id="speciality">
+                        <option *ngFor="let specl of deptData" value="{{specl}}">{{specl}}</option>
+                    </datalist>
+                    <select class="form-control rounded" aria-label="Search" aria-describedby="search-addon"
+                        style="color: hwb(0 77% 21%)">
+                        <option selected value="">--select doctor--</option>
+                        <option *ngFor="let i of doctorData,let index=index" value={{i.name}}>{{i.name}}</option>
+                    </select>
+                    <button (click)="getDoctorDetails" type="button" class="btn" value="">search</button>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <h3>Book your slots Now...</h3>
+            <a routerLink="/patient-view"><button class="btn btn-primary btn-block mb-4">Book </button></a>
+            <a routerLink="/login"><button routerLink="" type="button"
+                    class="btn btn-primary btn-block mb-4">Login</button></a>
+        </div>
+    </div>
+    <div class="box2">
+        <h3>We are here </h3>
+        <p>We lend our hands to you with a mission to exceed your expectations. Our well-trained staffs are right in
+            front of you with quality care services and comprehensive health screening programs.
+            The facilitated services will be provided for people who reside within 10 km of the hospital premise. The
+            service can only be availed through booking and the time is scheduled between 9 am to 5 pm.</p>
+    </div>
+    <div class="sub-box2">
+        <img
+            src="https://www.smarteyeapps.com/demo/cardiology-medical-hospital/assets/images/blog/blog_01.jpg">
+        <div class="overlay">My Name is John</div>
+    </div>
+    <div class="sub-box2">
+        <img
+            src="https://www.hematologyadvisor.com/wp-content/uploads/sites/14/2019/01/pediatricg622282914_1257950-640x393.jpg">
+    </div>
+    <div class="sub-box2">
+        <img src="https://www.mygynaec.com/wp-content/uploads/2017/03/minimal-invasive-endoscopy4.jpg">
+    </div>
+    <div class="sub-box2">
+        <img src="https://www.smarteyeapps.com/demo/cardiology-medical-hospital/assets/images/services/service-2.jpg">
+    </div>
+    <div class="footer">
+        <div class="footer1">
+            <h4>Quick Links</h4>
+            <br>
+            <h6>Find a Doctor</h6>
+            <h6>Book an Appointment</h6>
+            <h6>Make an Enquiry</h6>
+            <h6>Leave a Feedback</h6>
+            <h6>Hospitals</h6>
+            <h6>XYZ Wellness</h6>
+            <h6>XYZ Volunteers</h6>
+            <h6>XYZ Foundation</h6>
+            <h6>Insurance</h6>
+            <h6>Careers</h6>
+            <h6>Admission & Discharge</h6>
+            <h6>Guidelines for Patient & Attendants</h6>
+            <h6>Patient Rights and Responsibilities</h6>
+        </div>
+        <div class="footer2">
+            <h4>Multispeciality</h4>
+            <br>
+            <h6>Anaesthesiology</h6>
+            <h6>Bariatric Metabolic Surgery</h6>
+            <h6>Dentistry</h6>
+            <h6>Dermatology</h6>
+            <h6>ENT And Head & Neck Surgery</h6>
+            <h6>Emergency Medicine</h6>
+            <h6>Endocrinology & Diabetology</h6>
+            <h6>IVF & Fertility</h6>
+            <h6>Internal Medicine</h6>
+            <h6>Nephrology</h6>
+            <h6>Nutrition & Dietetic</h6>
+            <h6>Ophthalmology</h6>
+            <h6>Rheumatology</h6>
+            <h6>Urology</h6>
+        </div>
+        <div class="footer3">
+            <h4>Contact Us</h4>
+            <br>
+            <h6>9656761548</h6>
+            <h6>xyzhospital@gmail.com</h6>
+            <h6>xyx hospital</h6>
+            <h6>Kakkanad</h6>
+            <h6>Kochi</h6>
+            <h6>kerala</h6>
+            <h6>PIN:679355</h6>
+            <br>
+            <h4>social</h4>
+            <table>
+                <th><a href="#" class="fa fa-facebook"></a></th>
+                <th> <a href="#" class="fa fa-twitter"></a></th>
+            </table>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

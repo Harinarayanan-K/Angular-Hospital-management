@@ -1,0 +1,183 @@
+.box1 {
+    height: 14.5cm;
+    background-image: url("https://www.reabilitarvidas.com.br/static/img/large/f51b8b0a3b6fd6ab7c9f54c031f29158.jpg");
+}
+
+.main-container {
+    padding-top: 1.3cm;
+    height: 15cm;
+}
+
+h1 {
+    max-width: 100%;
+    padding-left: 14cm;
+    padding-top: 4cm;
+    font-size: 1.875rem;
+    color: #0a2a6c;
+    margin: 0.5rem 0;
+    text-transform: none;
+    letter-spacing: -.05625rem;
+    line-height: 2.1875rem;
+    font-weight: 600;
+}
+
+
+.box2 {
+    width: 100%;
+    height: 6cm;
+    text-align: center;
+    padding-top: 1cm;
+    background-color: #f8f9fa;
+    ;
+    float: left;
+}
+
+/* .box{
+    width: 100%;
+    height: 2.5cm;
+    background-color: ;
+
+} */
+
+.sub-box2 {
+    width:25%;
+    float: left;
+    height: 8cm;
+    transition: transform .2s;
+    margin: 0 auto;
+}
+
+.sub-box2:hover {
+    transform: scale(1.2);
+}
+
+.sub-box1 img {
+    height: 100%;
+    width: 33.6%;
+    float: left;
+}
+
+.sub-box2 img {
+    width: 100%;
+    float: left;
+    height: 8cm;
+}
+
+.sub-box3 img {
+    width: 100%;
+    float: left;
+    height: 8cm;
+}
+
+.sub-box4 img {
+    width: 100%;
+    height: 8cm;
+}
+
+.search {
+    width: 50%;
+    float: left;
+    height: auto;
+}
+
+.main {
+    padding-top: 10cm;
+    padding-left: 20%;
+    color: black;
+    width: 50%;
+    float: left;
+}
+
+.search1 {
+    height: 6cm;
+    width: 70%;
+    display: flex;
+    margin-top: 8cm;
+    padding-top: 4cm;
+}
+
+.inp {
+    width: 17cm;
+    display: flex;
+    height: 1cm;
+}
+
+.main btn btn-outline-primary btn-rounded {
+    color: black;
+    font-weight: 300mm;
+}
+
+.footer1 {
+    width: 33.33%;
+    height: 15cm;
+    float: left;
+    background-color: #0f0f0f;
+    color: white;
+    padding-left: 1cm;
+    padding-top: 2cm;
+}
+
+.footer2 {
+    width: 33.33%;
+    height: 15cm;
+    float: left;
+    background-color: #0f0f0f;
+    color: white;
+    padding-top: 2cm;
+}
+
+.footer3 {
+    width: 33.33%;
+    height: 15cm;
+    float: left;
+    background-color: #0f0f0f;
+    color: white;
+    padding-top: 2cm;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    margin-left: 9px;
+}
+
+.btn-primary:hover {
+    color: whitesmoke;
+    background-color: rgb(51, 51, 91);
+}
+
+
+.fa {
+    padding: 20px;
+    font-size: 15pxpx;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    height: 8px;
+    padding-top: 5px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.btn {
+    background-color: #2f7786;
+    color: white;
+    margin-left: 10px;
+}
+
+.form-control {
+    margin-left: 10px;
+}

@@ -1,0 +1,19 @@
+.container {
+    margin-top: 3cm;
+}
+
+.nav {
+    margin-top: 1.5cm;
+}
+
+.search {
+    width: 100%;
+    height: 2cm;
+    margin-top: 3cm;
+}
+
+.inp {
+    width: 7cm;
+    display: flex;
+    margin-left: 80%;
+}

@@ -1,0 +1,171 @@
+<!-- patient boking form -->
+
+<app-header></app-header>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script  src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>  
+</body>
+</html>
+<div class="main-body">
+    <div class="box1">
+        <h3>Book Your Slot Here..</h3>
+        <body>
+            <div class="m-4">
+                <form class="forms" [formGroup]="patientForm" (ngSubmit)="postPatientDetails()">
+                    <div class="mb-3">
+                        <label class="form-label" for="inputName">Patient name</label>
+                        <input type="text" formControlName="patientName" class="form-control" id="inputName"
+                            placeholder="Patient name" required />
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['patientName'].touched && patientForm.hasError('required','patientName')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['patientName'].touched && patientForm.hasError('pattern','patientName')">please
+                            enter valid name</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="inputGender">Gender</label>
+                        <br />
+                        <input type="radio" formControlName="gender" id="html" value="male" />
+                        <label for="html">Male</label>
+                        <input type="radio" formControlName="gender" id="css" value="female" />
+                        <label for="css">Female</label><br />
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['gender'].touched && patientForm.hasError('required','gender')">required
+                            field</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputEmail">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="inputEmail"
+                            placeholder="Email" required />
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['email'].touched && patientForm.hasError('required','email')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['email'].touched && patientForm.hasError('pattern','email')">please
+                            enter valid email</span>
+
+
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputEmail">Phone</label>
+                        <input type="text" formControlName="phoneNumber" class="form-control" id="inputEmail"
+                            placeholder="Phone" required />
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['phoneNumber'].touched && patientForm.hasError('required','phoneNumber')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['phoneNumber'].touched && patientForm.hasError('pattern','phoneNumber')">please
+                            enter valid phone number</span>
+                    </div>
+                    <div>
+                        <label class="form-label" for="inputDepartment">Department</label>
+                        <select formControlName="department" class="form-select mb-3"
+                            (change)="onChange($event.target)">
+                            <option selected disabled value="">Department</option>
+                            <option *ngFor="let i of departments">{{i}}</option>
+                            <span class="text-danger"
+                                *ngIf="patientForm.controls['department'].touched && patientForm.hasError('required','department')">required
+                                field</span>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label" for="inputDoctor">Doctor</label>
+                        <select formControlName="doctorId" class="form-select mb-3" #doctor>
+                            <option selected disabled value="">Doctors</option>
+                            <option *ngFor="let i of doctors" [value]="i.userId">{{i.name}}</option>
+                            <span class="text-danger"
+                                *ngIf="patientForm.controls['doctorId'].touched && patientForm.hasError('required','doctorId')">required
+                                field</span>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="inputDate">Date</label>
+                        <input (input)="dates($event.target,doctor.value
+                        )" type="date" formControlName="appointmentDate" class="form-control" id="inputDate"
+                            placeholder="Email" required />
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['appointmentDate'].touched && patientForm.hasError('required','appointmentDate')">required
+                            field</span>
+
+                    </div>
+                    <div>
+                        <label class="form-label" for="inputDoctor">Choose Time</label>
+                        <select formControlName="time" class="form-select mb-3" (change)="availTime($event.target)">
+                            <option selected disabled value="">Time</option>
+                            <option value="9:00AM">9.00am</option>
+                            <option value="9:30AM">9:30am</option>
+                            <option value="10:0AM">10.0am</option>
+                            <option value="10:30AM">10:30am</option>
+                            <option value="11:00AM">11.00am</option>
+                            <option value="11:30AM">11:30am</option>
+                            <option value="12:00AM">12.00am</option>
+                            <option value="1:00AM">1.00am</option>
+                            <option value="1:30AM">1:30am</option>
+                            <option value="2:00AM">2.00am</option>
+                            <option value="2:30AM">2:30am</option>
+                            <option value="3:00AM">3.00am</option>
+                        </select>
+                        <span class="text-danger"
+                            *ngIf="patientForm.controls['time'].touched && patientForm.hasError('required','time')">required
+                            field</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Book</button>
+                </form>
+            </div>
+        </body>
+    </div>
+    <div class="box2">
+       
+        <div class="container">
+            
+                <h4>View your previous history here</h4>
+                <div class="inp">
+                  <input type="search" class="form-control rounded" placeholder="email or phone" aria-label="Search" aria-describedby="search-addon" #patient />
+                  <button (click)="findPatient(patient.value)" type="button" class="btn btn-outline-primary" value="">search</button>
+                </div>
+                
+                <div class="main body">
+       
+                    <table class="table" id="tblPatients">
+                        <thead>
+                            <tr>
+                                <th scope="col">Patient Name</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Department</th>
+                                <th scope="col">Visited Doctor</th>
+                                <th scope="col">Appointment Date</th>
+                                <th scope="col">Time</th>
+                                
+                              
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let row of patientData let id=index">
+                                <td>{{row.patientName}}</td>
+                                <td>{{row.gender}}</td> 
+                                <td>{{row.department}}</td>
+                                <td>{{row.doctor}}</td>
+                                <td>{{row.appointmentDate}}</td>
+                                <td>{{row.time}}</td>
+                               
+                              
+                        </tbody>
+                    </table>
+            
+                </div>
+                <button   class="btn btn-primary"  (click)="download()">Download pdf</button>
+            </div>
+    </div>
+</div>
+<app-footer></app-footer>

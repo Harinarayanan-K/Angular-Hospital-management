@@ -1,0 +1,28 @@
+.header {
+    position: fixed;
+    top: 0%;
+    background-color: #2f7786;
+    width: 100%;
+    padding: 10px;
+    color: white;
+    height: 1.8cm;
+}
+
+.left {
+    width: 50%;
+    float: left;
+}
+
+.right {
+    width: 50%;
+    float: left;
+    padding-left: 10cm;
+    padding-top: 0.5cm;
+}
+
+.img {
+    width: 2.4cm;
+    height: 1.3cm;
+    padding-left: 1cm;
+    padding-bottom: 3px;
+}

@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="main-body">
+  <div class="container">
+    <div class="content">
+      <form class="loginform" [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-outline mb-4">
+          <input formControlName="email" type="email" id="form2Example1" class="form-control" />
+          <label class="form-label" for="form2Example1">Email address</label><br>
+          <span class="text-danger"
+            *ngIf="loginForm.controls['email'].touched && loginForm.hasError('required','email')">required field</span>
+          <span class="text-danger"
+            *ngIf="loginForm.controls['email'].touched && loginForm.hasError('pattern','email')">please enter valid
+            email</span>
+        </div>
+        <div class="form-outline mb-4">
+          <input formControlName="password" type="password" id="form2Example2" class="form-control" />
+          <label class="form-label" for="form2Example2">Password</label><br>
+          <span class="text-danger"
+            *ngIf="loginForm.controls['password'].touched && loginForm.hasError('required','password')">required
+            field</span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

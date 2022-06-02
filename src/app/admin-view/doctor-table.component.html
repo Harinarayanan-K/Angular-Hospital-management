@@ -1,0 +1,196 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="search">
+        <h6>Total Doctors: {{count}}</h6>
+        <div class="inp">
+
+            <input (input)="test($event)" type="search" class="form-control rounded" placeholder="Search"
+                aria-label="Search" aria-describedby="search-addon" #doctor />
+            <!-- <button (click)="findDoctor(doctor.value)" type="button" class="btn btn-outline-primary" value="">search</button> -->
+        </div>
+    </div>
+    <div class="main body">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Doctor Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">speciallity</th>
+                    <th scope="col">Education</th>
+                    <th scope="col">Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of doctorData let id=index">
+                    <td>{{row.userId}}</td>
+                    <td>{{row.name}}</td>
+                    <td>{{row.email}}</td>
+                    <td>{{row.phoneNumber}}</td>
+                    <td>{{row.speciality}}</td>
+                    <td>{{row.education}}</td>
+                    <td>
+                        <button (click)="editDoctorDetails(id)" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal3" aria-hidden="true"><i class="fa fa-pencil"></i></button>
+                        <button (click)="deleteDoctorDetails(row)" class="btn"><i class="fa fa-trash"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal" aria-hidden="true"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+            <button style="margin-bottom:2cm ;" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal2">Add
+                Doctors</button>
+        </table>
+    </div>
+</div>
+
+<!-- add doctor form -->
+
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Doctor Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="doctorForm" (ngSubmit)='postDoctorDetails()'>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" formControlName="name" class="form-control" id="exampleInputname"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['name'].touched && doctorForm.hasError('required','name')">name
+                            is required</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['email'].touched && doctorForm.hasError('required','email')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['email'].touched && doctorForm.hasError('pattern','email')">please
+                            enter valid email</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Phone</label>
+                        <input type="text" formControlName="phoneNumber" class="form-control"
+                            id="exampleInputPassword1">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['phoneNumber'].touched && doctorForm.hasError('required','phoneNumber')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['phoneNumber'].touched && doctorForm.hasError('pattern','phoneNumber')">please
+                            enter valid phone number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password" id="exampleInputpassword"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['password'].touched && doctorForm.hasError('required','password')">required
+                            field</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Speciality</label>
+                        <input type="text" class="form-control" formControlName="speciality" id="exampleInputspeciality"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['speciality'].touched && doctorForm.hasError('required','speciality')">required
+                            field</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Education</label>
+                        <input type="text" class="form-control" formControlName="education" id="exampleInputEducation"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['education'].touched && doctorForm.hasError('required','education')">required
+                            field</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- doctor update -->
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Doctor Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="doctorForm" (ngSubmit)='updateDoctorDetails()'>
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input type="text" formControlName="name" class="form-control" id="exampleInputname"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['name'].touched && doctorForm.hasError('required','name')">name
+                            is required</span>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" formControlName="email" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['email'].touched && doctorForm.hasError('required','email')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['email'].touched && doctorForm.hasError('pattern','email')">please
+                            enter valid email</span>
+                    </div>
+                    <div class="mb-3" let userId=id;>
+                        <label for="exampleInputPassword1" class="form-label">Phone</label>
+                        <input type="text" formControlName="phoneNumber" class="form-control"
+                            id="exampleInputPassword1">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['phoneNumber'].touched && doctorForm.hasError('required','phoneNumber')">required
+                            field</span>
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['phoneNumber'].touched && doctorForm.hasError('pattern','phoneNumber')">please
+                            enter valid phone number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Password</label>
+                        <input type="password" class="form-control" formControlName="password" id="exampleInputpassword"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['password'].touched && doctorForm.hasError('required','password')">required
+                            field</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Speciality</label>
+                        <input type="text" class="form-control" formControlName="speciality" id="exampleInputspeciality"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['speciality'].touched && doctorForm.hasError('required','speciality')">required
+                            field</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Education</label>
+                        <input type="text" class="form-control" formControlName="education" id="exampleInputEducation"
+                            aria-describedby="emailHelp">
+                        <span class="text-danger"
+                            *ngIf="doctorForm.controls['education'].touched && doctorForm.hasError('required','education')">required
+                            field</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

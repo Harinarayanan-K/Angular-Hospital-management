@@ -1,0 +1,41 @@
+.container {
+    margin-top: 3cm;
+}
+
+table {
+    margin-top: 1cm;
+}
+
+.count {
+    width: 50%;
+    height: 1.4cm;
+    float: left;
+    float: left;
+    padding-top: 25px;
+}
+
+h6 {
+    float: left;
+    color: #1a0dab;
+}
+.inp
+{
+    width: 50%;
+    height: 1.3cm;
+    float: left;
+    width: 7cm;
+    display: flex;
+    padding-top: 12px;
+}
+.search
+{
+   
+    width: 50%;
+    height: 1.4cm;
+    float: left;
+    padding-left: 40%;
+}
+.main
+{   padding-bottom: 1cm;
+    width: 100%;
+}
